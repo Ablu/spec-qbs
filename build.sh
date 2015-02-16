@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 [ -d qbs ] || git clone https://gitorious.org/qt-labs/qbs.git
+[ -d buildroot ] || mkdir -p buildroot/{SOURCES,SPECS}
 
 pushd qbs
     git fetch
