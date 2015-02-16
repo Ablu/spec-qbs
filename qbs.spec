@@ -99,6 +99,27 @@ The typescript module contains properties and rules for building
 TypeScript applications and may be used in combination with the Node.js
 module to run TypeScript applications directly from Qbs.
 
+%package android
+Summary:   Android module for qbs
+License:   LGPLv2 with exceptions
+
+%description android
+Provides utilities for building android applications.
+
+%package java
+Summary:   Java module for qbs
+License:   LGPLv2 with exceptions
+
+%description java
+Provides support for compiling Java applications.
+
+%package archiver
+Summary:   Archive module for qbs
+License:   LGPLv2 with exceptions
+
+%description archiver
+Provides support for building archives as part of a build.
+
 %package examples
 Summary:    Examples for the usage of qbs
 # See headers of the example files
@@ -140,6 +161,9 @@ rm -rf %{buildroot}/%{_datadir}/%{name}/modules/ib
 
 # Remove the WiX-Module since it is only useful for Windows
 rm -rf %{buildroot}/%{_datadir}/%{name}/modules/wix
+
+# Remove the IB-Module since it is only useful for OS X or iOS
+rm -rf %{buildroot}/%{_datadir}/%{name}/modules/bundle
 
 # Manuall install the docs to prevent ownership
 # on the whole docs directory
@@ -202,6 +226,19 @@ install -D -p -m 644 LICENSE.LGPLv21 LICENSE.LGPLv3 LGPL_EXCEPTION.txt README %{
 
 %files typescript
 %{_datadir}/%{name}/modules/typescript
+
+%files typescript
+%{_datadir}/%{name}/modules/typescript
+
+%files android
+%{_bindir}/%{name}-setup-android
+%{_datadir}/%{name}/modules/Android
+
+%files java
+%{_datadir}/%{name}/modules/java
+
+%files archiver
+%{_datadir}/%{name}/modules/archiver
 
 %files examples
 %{_datadir}/%{name}/examples
