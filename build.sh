@@ -3,9 +3,10 @@
 [ -d qbs ] || git clone https://gitorious.org/qt-labs/qbs.git
 [ -d buildroot ] || mkdir -p buildroot/{SOURCES,SPECS}
 
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 pushd qbs
     git fetch
-    git reset --hard origin/master #v1.3.3
+    git reset --hard origin/$BRANCH
     VERSION=$(git describe | sed 's/^v//' | sed 's/-[^-]*$//' | sed 's/-/\./')
     git archive HEAD --prefix=qbs-$VERSION/ -o ../buildroot/SOURCES/qbs-$VERSION.src.tar.gz
 popd
