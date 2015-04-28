@@ -1,5 +1,5 @@
 Name:       qbs
-Version:    1.3.3
+Version:    1.4.0
 Release:    1%{?dist}
 Summary:    Next-generation build system for projects
 # Same license exceptions as all Qt based packages.
@@ -169,6 +169,9 @@ rm -rf %{buildroot}/%{_datadir}/%{name}/modules/bundle
 # on the whole docs directory
 install -D -p -m 644 LICENSE.LGPLv21 LICENSE.LGPLv3 LGPL_EXCEPTION.txt README %{buildroot}/%{_docdir}/%{name}/
 
+%check
+make check %{?_smp_mflags}
+
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -248,6 +251,9 @@ install -D -p -m 644 LICENSE.LGPLv21 LICENSE.LGPLv3 LGPL_EXCEPTION.txt README %{
 %dir %{_docdir}/%{name}/
 
 %changelog
+* Tue Apr 28 2015 Erik Schilling <ablu.erikschilling@googlemail.com> 1.4.0-1
+- New release 1.4.0
+
 * Thu Dec 11 2014 Erik Schilling <ablu.erikschilling@googlemail.com> 1.3.3-1
 - New release 1.3.3
 - Removed tests since it is too hard to maintain their lookup of plugins
