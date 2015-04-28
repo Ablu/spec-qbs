@@ -144,6 +144,7 @@ HTML documentation for the Qt Build Suite
     QBS_INSTALL_PREFIX=%{_prefix} \
     QBS_LIB_INSTALL_DIR=%{_libdir} \
     QBS_PLUGINS_INSTALL_DIR=%{_libdir} \
+    QBS_PLUGINS_BUILD_DIR=%{_libdir} \
     QBS_LIBRARY_DIRNAME=%{_lib} \
     CONFIG+=disable_rpath \
     CONFIG+=nostrip \
