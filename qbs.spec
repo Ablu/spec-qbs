@@ -170,6 +170,9 @@ rm -rf %{buildroot}/%{_datadir}/%{name}/modules/bundle
 install -D -p -m 644 LICENSE.LGPLv21 LICENSE.LGPLv3 LGPL_EXCEPTION.txt README %{buildroot}/%{_docdir}/%{name}/
 
 %check
+bin/qbs setup-toolchains /usr/bin/gcc qbs_autotests_gcc
+bin/qbs setup-toolchains /usr/bin/qmake-qt5 qbs_autotests
+bin/qbs config profiles.qbs_autottests.baseProfile qbs_autotests_gcc
 make check %{?_smp_mflags}
 
 %post -p /sbin/ldconfig
