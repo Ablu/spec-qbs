@@ -173,7 +173,7 @@ install -D -p -m 644 LICENSE.LGPLv21 LICENSE.LGPLv3 LGPL_EXCEPTION.txt README %{
 bin/qbs setup-toolchains --type gcc /usr/bin/g++ qbs_autotests_gcc
 bin/qbs setup-qt /usr/bin/qmake-qt5 qbs_autotests
 bin/qbs config profiles.qbs_autottests.baseProfile qbs_autotests_gcc
-make check %{?_smp_mflags}
+LD_LIBRARY_PATH="%{buildroot}/%{_libdir}/" make check %{?_smp_mflags}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
