@@ -143,10 +143,9 @@ HTML documentation for the Qt Build Suite
 %_qt5_qmake %{name}.pro -r \
     QBS_INSTALL_PREFIX=%{_prefix} \
     QBS_LIB_INSTALL_DIR=%{_libdir} \
-    QBS_PLUGINS_INSTALL_DIR=%{_libdir} \
     QBS_PLUGINS_BUILD_DIR=%{_lib} \
     QBS_LIBRARY_DIRNAME=%{_lib} \
-    CONFIG+=disable_rpath \
+    CONFIG+=qbs_disable_rpath \
     CONFIG+=nostrip \
     QMAKE_LFLAGS="-Wl,--as-needed" 
 
