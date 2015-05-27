@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-[ -d qbs ] || git clone https://gitorious.org/qt-labs/qbs.git
+[ -d qbs ] || git clone git://code.qt.io/qt-labs/qbs.git
 [ -d buildroot ] || mkdir -p buildroot/{SOURCES,SPECS}
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
