@@ -170,6 +170,15 @@ rm -rf %{buildroot}/%{_datadir}/%{name}/modules/bundle
 install -D -p -m 644 LICENSE.LGPLv21 LICENSE.LGPLv3 LGPL_EXCEPTION.txt README %{buildroot}/%{_docdir}/%{name}/
 
 %check
+# Set config for running the tests
+QBS_EXECUTABLE_PATH="%{buildroot}/%{_bindir}/%{name}"
+GCC_PROFILE="gcc_for_%{name}_autotest"
+QT_PROFILE="qt_for_%{name}_autotest"
+$QBS_EXECUTABLE_PATH setup-toolchains %{_bindir}/gcc $GCC_PROFILE
+$QBS_EXECUTABLE_PATH setup-qt %{_bindir}/qmake-qt5 $QT_PROFILE
+
+$QBS_EXECUTABLE_PATH config profiles.$QT_PROFILE.baseProfile $GCC_PROFILE
+$QBS_EXECUTABLE_PATH config profiles.%{name}_autotests.baseProfile $QT_PROFILE
 make check %{?_smp_mflags}
 
 %post -p /sbin/ldconfig
