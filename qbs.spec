@@ -239,9 +239,6 @@ make check %{?_smp_mflags}
 %files typescript
 %{_datadir}/%{name}/modules/typescript
 
-%files typescript
-%{_datadir}/%{name}/modules/typescript
-
 %files android
 %{_bindir}/%{name}-setup-android
 %{_datadir}/%{name}/modules/Android
