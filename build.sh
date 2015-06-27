@@ -6,7 +6,7 @@
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 pushd qbs
     git fetch
-    git reset --hard origin/$BRANCH
+    git checkout origin/$BRANCH
     VERSION=$(git describe | sed 's/^v//' | sed 's/-[^-]*$//' | sed 's/-/\./')
     git archive HEAD --prefix=qbs-$VERSION/ -o ../buildroot/SOURCES/qbs-$VERSION.src.tar.gz
 popd
